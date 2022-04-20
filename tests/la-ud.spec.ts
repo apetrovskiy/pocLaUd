@@ -1,4 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
+import { Locations } from './common/locations';
+import { login, navigateLaUd as navigateToLaUd } from './common/odr-helper';
 import { OdrTexts } from './common/odr-text';
 
 test.beforeEach(async ({ page }) => {
@@ -20,26 +22,8 @@ test.describe('LA UD start', () => {
     // TODO: to config
     await page.setViewportSize({ width: 2655, height: 1361 });
 
-    await page.locator('#loginHome').fill(plaintiffName);
-    await page.locator('#passwdHome').fill(plaintiffPassword);
-    await page.locator('#login-page').click();
-
-    await navigationPromise;
-
-    // TODO: to test data
-    await page.locator(`a:has-text('${OdrTexts.california.toString()}')`).click();
-
-    await navigationPromise;
-
-    await page
-      .locator(`a:has-text('${OdrTexts.landlordTenantDisputes}')`)
-      .click();
-
-    await navigationPromise;
-
-    await page.locator(`a:has-text('${OdrTexts.ud}')`).click();
-
-    await navigationPromise;
+    await login(page, plaintiffName, plaintiffPassword);
+    await navigateToLaUd(page);
 
     await page.waitForSelector('#fldAppInfoCourtList_0');
     await page.locator('#fldAppInfoCourtList_0').type('L');
@@ -47,18 +31,8 @@ test.describe('LA UD start', () => {
 
     await page.waitForSelector('#fldAppInfoLocList_0');
     // TODO: from test data
-    await page.locator('#fldAppInfoLocList_0').type('Stanley');
-    // await page.click('#fldAppInfoLocList_0');
+    await page.locator('#fldAppInfoLocList_0').type(`${Locations.stanleyMosk}`);
 
-    // await page.selectOption('#fldAppInfoLocList_0', '22852661');
-
-    // #wrapper > table > tbody > tr:nth-child(1) > td > div:nth-child(14) > table:nth-child(1) > tbody > tr:nth-child(2) > td.main-area > table:nth-child(4) > tbody > tr:nth-child(4) > td:nth-child(3) > a.paperwork-start.sign-in-but-next
-    // await page.waitForSelector(
-    //   '.main-area > table > tbody > tr:nth-child(4) > td:nth-child(3)'
-    // );
-    // await page.click(
-    //   '.main-area > table > tbody > tr:nth-child(4) > td:nth-child(3)'
-    // );
     await page.waitForSelector('a.paperwork-start');
     await page.click('a.paperwork-start');
 
