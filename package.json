@@ -1,0 +1,18 @@
+{
+    "name": "la-ud",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "playwright test"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@playwright/test": "^1.21.1"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.0"
+    }
+}
