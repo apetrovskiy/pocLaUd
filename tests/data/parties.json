@@ -1,23 +1,25 @@
 [{
         "name": "devtest",
         "disputeNumber": "29STUD45011",
+        "location": "stanleyMosk",
         "parties": [{
                 "type": "plaintiffSrl",
                 "email": "pla001@rambler.ru",
                 "password": "Lock12Lock",
-                "id": ""
+                "id": "17698209"
             },
             {
                 "type": "defendantSrl",
                 "email": "defe001@rambler.ru",
                 "password": "Lock12Lock",
-                "id": ""
+                "id": "17698208"
             }
         ]
     },
     {
         "name": "uat",
         "disputeNumber": "uuu",
+        "location": "stanleyMosk",
         "parties": [{
                 "type": "plaintiffSrl",
                 "email": "pla001@rambler.ru",
@@ -35,6 +37,7 @@
     {
         "name": "gamma",
         "disputeNumber": "ggg",
+        "location": "stanleyMosk",
         "parties": [{
                 "type": "plaintiffSrl",
                 "email": "pla001@rambler.ru",
