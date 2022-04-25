@@ -1,0 +1,52 @@
+[{
+        "name": "devtest",
+        "disputeNumber": "25STUD45011",
+        "parties": [{
+                "type": "plaintiffSrl",
+                "email": "pla001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            },
+            {
+                "type": "defendantSrl",
+                "email": "defe001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            }
+        ]
+    },
+    {
+        "name": "uat",
+        "disputeNumber": "uuu",
+        "parties": [{
+                "type": "plaintiffSrl",
+                "email": "pla001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            },
+            {
+                "type": "defendantSrl",
+                "email": "defe001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            }
+        ]
+    },
+    {
+        "name": "gamma",
+        "disputeNumber": "ggg",
+        "parties": [{
+                "type": "plaintiffSrl",
+                "email": "pla001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            },
+            {
+                "type": "defendantSrl",
+                "email": "defe001@rambler.ru",
+                "password": "Lock12Lock",
+                "id": ""
+            }
+        ]
+    }
+]

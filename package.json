@@ -13,6 +13,8 @@
         "@playwright/test": "^1.21.1"
     },
     "dependencies": {
+        "@types/node": "^17.0.26",
+        "@types/ssh2": "^0.5.52",
         "dotenv": "^16.0.0"
     }
 }
