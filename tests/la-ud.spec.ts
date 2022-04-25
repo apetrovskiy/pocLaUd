@@ -30,12 +30,6 @@ const defendantId = '17698208';
 
 test.describe('LA UD start', () => {
   test('should login into ODR as a plaintiff SRL', async ({ page }) => {
-    //
-    // const res = loadConfig();
-    // console.log(res);
-    // return;
-    //
-
     // const { chromium } = require('playwright');
     // const browser = await chromium.launch()
     // const page = await browser.newPage()
@@ -61,8 +55,6 @@ test.describe('LA UD start', () => {
   });
 
   test('should login into ODR as a defendant SRL', async ({ page }) => {
-    // return;
-
     // TODO: to config
     await page.setViewportSize({ width: 2655, height: 1361 });
 
