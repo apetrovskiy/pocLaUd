@@ -1,4 +1,5 @@
-const environment = process.env.ENVIRONMENT;
+import { loadConfig } from '../common/config-helper';
+
 const baseUrl = 'turbocourt.com';
 
 export enum URLs {
@@ -7,7 +8,8 @@ export enum URLs {
 }
 
 export const getEnvUrl = () => {
-  return environment + '.' + baseUrl;
+  const config = loadConfig();
+  return 'https://' + config.name + '.' + baseUrl;
 };
 
 export const getEdcsUrl = () => {
