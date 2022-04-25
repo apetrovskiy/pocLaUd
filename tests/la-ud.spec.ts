@@ -7,18 +7,18 @@ import { cleanUpDispute } from './common/edcs-helper';
 import { Config } from './model/config';
 import { getEnvUrl } from './model/urls';
 
-let config: Config | null = null;
+let config: Partial<Config> = {};
 
 test.beforeEach(async ({ page }) => {
   // TODO: use config
   // await page.goto('https://devtest.turbocourt.com');
   config = loadConfig();
-  cleanUpDispute(page, config.disputeNumber);
+  cleanUpDispute(page, config.disputeNumber!);
   await page.goto(getEnvUrl());
 });
 
 // TODO: to test data
-const disputeNumber = '29STUD45011';
+// const disputeNumber = '29STUD45011';
 
 const plaintiffName = 'pla001@rambler.ru';
 const plaintiffPassword = 'Lock12Lock';
@@ -43,7 +43,7 @@ test.describe('LA UD start', () => {
       password: plaintiffPassword,
       id: plaintiffId,
       location: Locations.stanleyMosk,
-      disputeNumber: disputeNumber,
+      disputeNumber: config.disputeNumber!,
     };
 
     await openCase(page, openCaseData);
@@ -63,7 +63,7 @@ test.describe('LA UD start', () => {
       password: defendantsPassword,
       id: defendantId,
       location: Locations.stanleyMosk,
-      disputeNumber: disputeNumber,
+      disputeNumber: config.disputeNumber!,
     };
 
     await openCase(page, openCaseData);
