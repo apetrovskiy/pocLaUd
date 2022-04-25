@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import { OpenCaseDto } from '../model/open-case-dto';
-import { OdrTexts } from './odr-text';
+import { OdrTexts } from '../model/odr-text';
 export const login = async (page: Page, username: string, password: string) => {
   await page.locator('#loginHome').fill(username);
   await page.locator('#passwdHome').fill(password);
