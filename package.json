@@ -13,6 +13,7 @@
         "@playwright/test": "^1.21.1"
     },
     "dependencies": {
+        "@types/tunnel-ssh": "^4.1.1",
         "dotenv": "^16.0.0"
     }
 }
