@@ -1,13 +1,18 @@
 import 'dotenv/config';
-import { Config } from '../model/config';
+import { DisputeConfig } from '../model/dispute-config';
 import configDataSet from '../data/parties.json';
 import { Environments } from '../model/environments';
 import { Party } from '../model/party';
 import { PartyTypes } from '../model/party-types';
+import { CommonConfig } from '../model/common-config';
 
-export const loadConfig = (): Config => {
+export const loadConfig = (): DisputeConfig => {
   const envName = process.env.ENVIRONMENT || Environments.devTest;
-  let subset: Config = {
+  const commonConfig: CommonConfig = {
+    edcsUsername: process.env.EDCS_USERNAME || '',
+    edcsPassword: process.env.EDCS_PASSWORD || '',
+  };
+  let subset: DisputeConfig = {
     name: Environments.devTest,
     disputeNumber: '',
     location: '',
@@ -18,6 +23,7 @@ export const loadConfig = (): Config => {
       break;
     }
   }
+  subset.commonConfig = commonConfig;
   return subset;
 };
 

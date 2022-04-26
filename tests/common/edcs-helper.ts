@@ -12,4 +12,8 @@ export const cleanUpDispute = async (page: Page, disputeNumber: string) => {
   //
   console.log(`EDCS URL = ${getEdcsUrl()}`);
   //
+
+  await page.goto(getEdcsUrl());
+  await page.waitForSelector("#fldLoginUserId_0")
+
 };

@@ -4,16 +4,16 @@ import { Locations } from './model/locations';
 import { openCase } from './common/odr-helper';
 import { OpenCaseDto } from './model/open-case-dto';
 import { cleanUpDispute } from './common/edcs-helper';
-import { Config } from './model/config';
+import { DisputeConfig } from './model/dispute-config';
 import { getEnvUrl } from './model/urls';
 import { prepareOpenCaseData } from './common/test-data-helper';
 import { PartyTypes } from './model/party-types';
 
-let config: Partial<Config> = {};
+let config: Partial<DisputeConfig> = {};
 
 test.beforeEach(async ({ page }) => {
   config = loadConfig();
-  cleanUpDispute(page, config.disputeNumber!);
+  await cleanUpDispute(page, config.disputeNumber!);
   await page.goto(getEnvUrl());
 });
 
