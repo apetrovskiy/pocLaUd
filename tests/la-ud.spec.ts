@@ -9,11 +9,12 @@ import { getEnvUrl } from './model/urls';
 import { prepareOpenCaseData } from './common/test-data-helper';
 import { PartyTypes } from './model/party-types';
 
-let config: Partial<DisputeConfig> = {};
+// let config: Partial<DisputeConfig> = {};
+let config: DisputeConfig;
 
 test.beforeEach(async ({ page }) => {
   config = loadConfig();
-  await cleanUpDispute(page, config.disputeNumber!);
+  await cleanUpDispute(page, config!);
   await page.goto(getEnvUrl());
 });
 
