@@ -1,15 +1,17 @@
+import { PartyTypes } from '../model/party-types';
 import { OpenCaseDto } from '../model/open-case-dto';
+import { loadConfig, selectParty } from './config-helper';
 
-export const prepareOpenCaseData = async (
-  fileName: string
-): Promise<OpenCaseDto> => {
-  // TODO:read test data file and fill in data
+export const prepareOpenCaseData = (partyType: PartyTypes): OpenCaseDto => {
+  const config = loadConfig();
+  const party = selectParty(partyType);
+
   const openCaseData: OpenCaseDto = {
-    email: '',
-    password: '',
-    id: '',
-    location: '',
-    disputeNumber: '',
+    email: party.email,
+    password: party.password,
+    id: party.id,
+    location: config.location,
+    disputeNumber: config.disputeNumber,
   };
   return openCaseData;
 };

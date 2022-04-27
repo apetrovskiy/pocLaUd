@@ -1,3 +1,4 @@
+import { Page } from '@playwright/test';
 import { loadConfig } from '../common/config-helper';
 
 const baseUrl = 'turbocourt.com';
@@ -5,6 +6,7 @@ const baseUrl = 'turbocourt.com';
 export enum URLs {
   edcs = '/edcs',
   cprof = '/cprof',
+  openingOffer = '/elf/dispatcher.jsp?gopage=p.odr.pstart.negotiation',
 }
 
 export const getEnvUrl = () => {
@@ -18,4 +20,7 @@ export const getEdcsUrl = () => {
 
 export const getCprofUrl = () => {
   return getEnvUrl() + URLs.cprof;
+};
+export const getOpeningOfferPage = () => {
+  return getEnvUrl() + URLs.openingOffer;
 };

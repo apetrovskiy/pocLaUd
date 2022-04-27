@@ -4,29 +4,19 @@ import { Locations } from './model/locations';
 import { openCase } from './common/odr-helper';
 import { OpenCaseDto } from './model/open-case-dto';
 import { cleanUpDispute } from './common/edcs-helper';
-import { Config } from './model/config';
+import { DisputeConfig } from './model/dispute-config';
 import { getEnvUrl } from './model/urls';
+import { prepareOpenCaseData } from './common/test-data-helper';
+import { PartyTypes } from './model/party-types';
 
-let config: Config | null = null;
+// let config: Partial<DisputeConfig> = {};
+let config: DisputeConfig;
 
 test.beforeEach(async ({ page }) => {
-  // TODO: use config
-  // await page.goto('https://devtest.turbocourt.com');
   config = loadConfig();
-  cleanUpDispute(page, config.disputeNumber);
+  await cleanUpDispute(page, config!);
   await page.goto(getEnvUrl());
 });
-
-// TODO: to test data
-const disputeNumber = '29STUD45011';
-
-const plaintiffName = 'pla001@rambler.ru';
-const plaintiffPassword = 'Lock12Lock';
-const plaintiffId = '17698209';
-
-const defendantName = 'defe001@rambler.ru';
-const defendantsPassword = 'Lock12Lock';
-const defendantId = '17698208';
 
 test.describe('LA UD start', () => {
   test('should login into ODR as a plaintiff SRL', async ({ page }) => {
@@ -38,13 +28,9 @@ test.describe('LA UD start', () => {
     // TODO: to config
     await page.setViewportSize({ width: 2655, height: 1361 });
 
-    const openCaseData: OpenCaseDto = {
-      email: plaintiffName,
-      password: plaintiffPassword,
-      id: plaintiffId,
-      location: Locations.stanleyMosk,
-      disputeNumber: disputeNumber,
-    };
+    const openCaseData: OpenCaseDto = prepareOpenCaseData(
+      PartyTypes.plaintiffSrl
+    );
 
     await openCase(page, openCaseData);
 
@@ -58,13 +44,9 @@ test.describe('LA UD start', () => {
     // TODO: to config
     await page.setViewportSize({ width: 2655, height: 1361 });
 
-    const openCaseData: OpenCaseDto = {
-      email: defendantName,
-      password: defendantsPassword,
-      id: defendantId,
-      location: Locations.stanleyMosk,
-      disputeNumber: disputeNumber,
-    };
+    const openCaseData: OpenCaseDto = prepareOpenCaseData(
+      PartyTypes.defendantSrl
+    );
 
     await openCase(page, openCaseData);
 
